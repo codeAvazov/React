@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+export const App = () => {
+  const [account, setAccount] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form action="">
+        {account ? (
+          <div>
+            <label htmlFor="">SignIn</label>
+            <input type="text" />
+            <br />
+            <input type="text" />
+          </div>
+        ) : (
+          <div>
+            <label htmlFor="">SignUp</label>
+            <input type="text" />
+            <br />
+            <input type="text" />
+          </div>
+        )}
+        <button type='submit'>
+          {account ? 'Sign IN' : 'Sign Up'}
+        </button>
+      </form>
+      {account ? <h2>You havent account ? <span className='text-danger' onClick={() => {
+        setAccount(false)
+      }} >SignUp</span></h2>
+       : <h2>You already have account <span className='text-danger' onClick={() => {
+        setAccount(true)
+       }} >SignIn</span></h2>}
     </div>
   );
-}
-
-export default App;
+};
