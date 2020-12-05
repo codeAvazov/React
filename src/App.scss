@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  //background-color: #F9F9F9;
+}
+
+@font-face {
+  font-family: SF Pro Display;
+  src: url("./assets/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SF Pro Display Semi;
+  src: url("./assets/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+  font-display: swap;
+}
+
+.wrapper {
+  background-color: #F9F9F9;
+  padding: 63px 0 73px 50px;
+  overflow-x: hidden;
+  position: relative;
+  max-width: 88%;
+  //position: absolute;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
+
+  .icon_arrow_group {
+    position: absolute;
+    top: 8.5%;
+    right: 4.2%;
+    z-index: 999999;
+    div {
+      cursor: pointer;
+    }
+    @media screen and (max-width: 768px){
+      top: 32%;
+      right: 12%;
+    }
+  }
+
+  .text-content {
+    .title {
+      font-family: SF Pro Display, sans-serif;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 55px;
+      letter-spacing: -0.02em;
+      text-align: left;
+      position: relative;
+    }
+
+    .textCont {
+      font-family: SF Pro Display, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 39px;
+      letter-spacing: -0.02em;
+      text-align: left;
+      max-width: 796px;
+      margin-top: 1rem;
+    }
+  }
+
+  .cardContent {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    flex-wrap: nowrap;
+    transform-style: preserve-3d;
+    margin-top: 1rem;
+    @media screen and (max-width: 768px){
+      margin-top: 3rem;
+    }
+
+    .cardBlock {
+      position: absolute;
+      width: 320px;
+      height: 500px;
+      cursor: pointer;
+      padding: 30px 40px;
+      transition: .4s ease-in-out;
+      transform-style: preserve-3d;
+
+      &:nth-child(2) {
+        left: calc(340px + 40px);
+      }
+      &:nth-child(3) {
+        left: calc(2*340px + 2*40px);
+      }
+      &:nth-child(4) {
+        left: calc(3*340px + 3*40px);
+      }
+      &:nth-child(5) {
+        left: calc(4*340px + 4*40px);
+      }
+      &:nth-child(6) {
+        left: calc(5*340px + 5*40px);
+      }
+      &:nth-child(7) {
+        left: calc(6*340px + 6*40px);
+      }
+
+      .cardTitle {
+        font-family: SF Pro Display, sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        color: #ffffff;
+        width: max-content;
+        max-width: 180px;
+      }
+
+      .icon_group_1 {
+        div:first-child {
+          position: absolute;
+          top: 173px;
+          left: 57px;
+        }
+        div:last-child {
+          position: absolute;
+          top: 226px;
+          left: 87px;
+        }
+      }
+
+      .icon_group_2, .icon_group_5 {
+        div:first-child {
+          position: absolute;
+          top: 140px;
+          left: 85px;
+        }
+        div:last-child {
+          position: absolute;
+          top: 157px;
+          left: 139.1px;
+          transform: scaleY(.9);
+        }
+      }
+
+      .icon_group_3, .icon_group_7 {
+        div:first-child {
+          position: absolute;
+          top: 219px;
+          left: 162px;
+        }
+        div:last-child {
+          position: absolute;
+          top: 190px;
+          left: 39px;
+        }
+      }
+
+      .icon_group_4, .icon_group_6 {
+        div:first-child {
+          position: absolute;
+          top: 183px;
+          left: 52px;
+        }
+        div:last-child {
+          position: absolute;
+          top: 306px;
+          left: 135px;
+        }
+      }
+
+      a {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        color: #ffffff;
+        text-decoration: underline;
+        font-family: SF Pro Display, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: lighter;
+        line-height: 39px;
+        letter-spacing: -0.02em;
+        z-index: 9999;
+      }
+
+      .hoverBlock {
+        position: absolute;
+        top: 18%;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        color: #fff;
+        padding: 30px 40px;
+        font-family: SF Pro Display, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: lighter;
+        line-height: 30px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        opacity: 0;
+        transition: .4s ease-in-out;
+      }
+
+      .hoverShadow {
+        position: absolute;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: .4s ease-in-out;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        .hoverBlock, .hoverShadow {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+
+#blockCard:hover {
+  .hoverBlock, .hoverShadow {
+    opacity: 1;
+  }
+}
