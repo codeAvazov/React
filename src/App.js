@@ -10,18 +10,7 @@ export default function App() {
   const [step, setStep] = useState(0);
 
   const startCarousel = useSpring({
-    transform:
-      step === 0
-        ? "translateX(0px)"
-        : step === 1
-        ? "translateX(-380px)"
-        : step === 2
-        ? "translateX(-760px)"
-        : step === 3
-        ? "translateX(-1140px)"
-        : step === 4
-        ? "translateX(-1520px)"
-        : "",
+    transform: `translateX(-${step*380}px)`,
     config: {
       duration: 500,
     },
@@ -32,7 +21,7 @@ export default function App() {
   };
 
   const handleRight = () => {
-    if (step < 4) setStep(step + 1);
+    if (step < courses().length - 3) setStep(step + 1);
   };
 
   return (
@@ -54,7 +43,7 @@ export default function App() {
       <animated.div style={startCarousel}>
         <div className={"cardContent d-flex"}>
           {courses().map((i) => (
-            <NavLink to={i.to} id='blockCard' style={{marginRight : '3.8rem'}}>
+            <NavLink to={i.to} id="blockCard" style={{ marginRight: "3.8rem" }}>
               <Card
                 style={{
                   backgroundColor: "red",
@@ -63,6 +52,7 @@ export default function App() {
                 }}
                 borderRadius="0"
                 shineStrength={0.2}
+                className='position-relative'
               >
                 <div
                   key={i.id}
@@ -90,20 +80,20 @@ export default function App() {
                     <div className={"icon_2"}>{i.icon2}</div>
                     <div>{i.icon1}</div>
                   </div>
-                  <a href='#123'>Batafsil</a>
+                  <a href="#123">Batafsil</a>
                   <div
                     className={"hoverBlock"}
                     style={{ backgroundColor: i.color + "75" }}
                   >
                     {i.content}
                   </div>
-                  <div
-                    className={"hoverShadow"}
-                    style={{
-                      boxShadow: "0px 20px 40px 1.5px" + i.color + "75",
-                    }}
-                  />
                 </div>
+                <div
+                  className={"hoverShadow"}
+                  style={{
+                    boxShadow: "0px 20px 40px 1.5px" + i.color,
+                  }}
+                />
               </Card>
             </NavLink>
           ))}

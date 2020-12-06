@@ -72,5 +72,25 @@ export const courses = () => {
       icon2 : ios_2(),
       to : '/ios',
     },
+    {
+      id: 6,
+      title: "Flutter developer",
+      content:
+          "Web dasturlash brauzeringiz orqali ko’rishingiz va foydalanishingiz mumkin bo’lgan barcha web dasturlarni tayyorlash jarayonini o’z ichiga oladi.",
+      color : '#085B9F',
+      icon1 : flutter_2(),
+      icon2 : flutter_1(),
+      to : '/flutter',
+    },
+    {
+      id: 7,
+      title: "Ios developer",
+      content:
+          "Web dasturlash brauzeringiz orqali ko’rishingiz va foydalanishingiz mumkin bo’lgan barcha web dasturlarni tayyorlash jarayonini o’z ichiga oladi.",
+      color : '#011C21',
+      icon1 : ios_1(),
+      icon2 : ios_2(),
+      to : '/ios',
+    },
   ];
 };
