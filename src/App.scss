@@ -73,6 +73,7 @@ body {
   .cardContent {
     display: grid;
     position: relative;
+    grid-column-gap: 3.8rem;
     width: 100%;
     height: 500px;
     flex-wrap: nowrap;
@@ -83,7 +84,6 @@ body {
     }
 
     .cardBlock {
-      position: absolute;
       width: 320px;
       height: 500px;
       cursor: pointer;
@@ -210,10 +210,7 @@ body {
         transition: .4s ease-in-out;
       }
 
-      
-
       &:hover {
-        transform: scale(1.05);
         .hoverBlock, .hoverShadow {
           opacity: 1;
         }
@@ -234,6 +231,7 @@ body {
 }
 
 #blockCard:hover {
+  text-decoration: none;
   .hoverBlock, .hoverShadow {
     opacity: 1;
   }

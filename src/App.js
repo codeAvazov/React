@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { courses } from "./dataSource";
 import { useSpring, animated } from "react-spring";
@@ -8,13 +8,24 @@ import { NavLink } from "react-router-dom";
 
 export default function App() {
   const [step, setStep] = useState(0);
+  const [margin, setMargin] = useState(false);
 
   const startCarousel = useSpring({
-    transform: `translateX(-${step*380}px)`,
+    transform: `translateX(-${step * 380}px)`,
+    gridColumnGap: margin ? "7.9rem" : "3.8rem",
     config: {
       duration: 500,
     },
   });
+
+  useEffect(() => {
+    if (step > 0) {
+      setMargin(true);
+      setTimeout(() => {
+        setMargin(false);
+      }, 500);
+    }
+  }, [step]);
 
   const handleLeft = () => {
     if (step > 0) setStep(step - 1);
@@ -40,10 +51,10 @@ export default function App() {
           sohaning istiqboli aniq dalillar bilan ko‘rsatib beradi.
         </div>
       </div>
-      <animated.div style={startCarousel}>
-        <div className={"cardContent d-flex"}>
+      <animated.div>
+        <animated.div style={startCarousel} className={"cardContent d-flex"}>
           {courses().map((i) => (
-            <NavLink to={i.to} id="blockCard" style={{ marginRight: "3.8rem" }}>
+            <NavLink to={i.to} id="blockCard">
               <Card
                 style={{
                   backgroundColor: "red",
@@ -52,7 +63,7 @@ export default function App() {
                 }}
                 borderRadius="0"
                 shineStrength={0.2}
-                className='position-relative'
+                className="position-relative"
               >
                 <div
                   key={i.id}
@@ -97,7 +108,7 @@ export default function App() {
               </Card>
             </NavLink>
           ))}
-        </div>
+        </animated.div>
       </animated.div>
     </div>
   );
