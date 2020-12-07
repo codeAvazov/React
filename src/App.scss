@@ -40,9 +40,15 @@ body {
       cursor: pointer;
     }
     @media screen and (max-width: 768px){
-      top: 32%;
-      right: 12%;
+      top: 31%;
+      right: 2%;
     }
+
+    @media screen and (max-width: 420px){
+      top: 38%;
+      right: 2%;
+    }
+
   }
 
   .text-content {
@@ -80,7 +86,7 @@ body {
     transform-style: preserve-3d;
     margin-top: 1rem;
     @media screen and (max-width: 768px){
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     .cardBlock {

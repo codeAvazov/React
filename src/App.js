@@ -12,7 +12,7 @@ export default function App() {
 
   const startCarousel = useSpring({
     transform: `translateX(-${step * 380}px)`,
-    gridColumnGap: margin ? "7.9rem" : "3.8rem",
+    gridColumnGap: margin ? "7rem" : "3.8rem",
     config: {
       duration: 500,
     },
@@ -32,8 +32,16 @@ export default function App() {
   };
 
   const handleRight = () => {
-    if (step < courses().length - 3) setStep(step + 1);
+    if (window.innerWidth > 768) {
+      if (step < courses().length - 3) setStep(step + 1);
+    } else {
+      if (step < courses().length - 1) setStep(step + 1);
+    }
   };
+
+  window.addEventListener("resize", () => {
+    setStep(0);
+  });
 
   return (
     <div className="container wrapper">
@@ -51,64 +59,62 @@ export default function App() {
           sohaning istiqboli aniq dalillar bilan ko‘rsatib beradi.
         </div>
       </div>
-      <animated.div>
-        <animated.div style={startCarousel} className={"cardContent d-flex"}>
-          {courses().map((i) => (
-            <NavLink to={i.to} id="blockCard">
-              <Card
-                style={{
-                  backgroundColor: "red",
-                  width: "320px",
-                  height: "500px",
-                }}
-                borderRadius="0"
-                shineStrength={0.2}
-                className="position-relative"
+      <animated.div style={startCarousel} className={"cardContent d-flex"}>
+        {courses().map((i) => (
+          <NavLink to={i.to} id="blockCard">
+            <Card
+              style={{
+                backgroundColor: "red",
+                width: "320px",
+                height: "500px",
+              }}
+              borderRadius="0"
+              shineStrength={0.2}
+              className="position-relative"
+            >
+              <div
+                key={i.id}
+                style={{ backgroundColor: i.color }}
+                className={"cardBlock"}
               >
+                <div className={"cardTitle"}>{i.title}</div>
                 <div
-                  key={i.id}
-                  style={{ backgroundColor: i.color }}
-                  className={"cardBlock"}
+                  className={
+                    i.id === 1
+                      ? "icon_group_1"
+                      : i.id === 2
+                      ? "icon_group_2"
+                      : i.id === 3
+                      ? "icon_group_3"
+                      : i.id === 4
+                      ? "icon_group_4"
+                      : i.id === 5
+                      ? "icon_group_5"
+                      : i.id === 6
+                      ? "icon_group_6"
+                      : "icon_group_7"
+                  }
                 >
-                  <div className={"cardTitle"}>{i.title}</div>
-                  <div
-                    className={
-                      i.id === 1
-                        ? "icon_group_1"
-                        : i.id === 2
-                        ? "icon_group_2"
-                        : i.id === 3
-                        ? "icon_group_3"
-                        : i.id === 4
-                        ? "icon_group_4"
-                        : i.id === 5
-                        ? "icon_group_5"
-                        : i.id === 6
-                        ? "icon_group_6"
-                        : "icon_group_7"
-                    }
-                  >
-                    <div className={"icon_2"}>{i.icon2}</div>
-                    <div>{i.icon1}</div>
-                  </div>
-                  <a href="#123">Batafsil</a>
-                  <div
-                    className={"hoverBlock"}
-                    style={{ backgroundColor: i.color + "75" }}
-                  >
-                    {i.content}
-                  </div>
+                  <div className={"icon_2"}>{i.icon2}</div>
+                  <div>{i.icon1}</div>
                 </div>
+                <a href="#123">Batafsil</a>
                 <div
-                  className={"hoverShadow"}
-                  style={{
-                    boxShadow: "0px 20px 40px 1.5px" + i.color,
-                  }}
-                />
-              </Card>
-            </NavLink>
-          ))}
-        </animated.div>
+                  className={"hoverBlock"}
+                  style={{ backgroundColor: i.color + "75" }}
+                >
+                  {i.content}
+                </div>
+              </div>
+              <div
+                className={"hoverShadow"}
+                style={{
+                  boxShadow: "0px 20px 40px 1.5px" + i.color,
+                }}
+              />
+            </Card>
+          </NavLink>
+        ))}
       </animated.div>
     </div>
   );
